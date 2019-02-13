@@ -1,6 +1,6 @@
 <template>
-    <div class="home">
-        Home
+    <div>
+        NOT FOUND
     </div>
 </template>
 
@@ -8,3 +8,7 @@
 export default {
 };
 </script>
+
+<style>
+
+</style>
