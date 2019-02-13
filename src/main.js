@@ -2,7 +2,7 @@ import './assets/css/reset.css';
 import './assets/css/common.css';
 
 import Vue from 'vue';
-import App from './App.vue';
+import App from './app.vue';
 import router from './router';
 import store from './store';
 
