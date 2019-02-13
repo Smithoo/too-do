@@ -12,7 +12,7 @@ module.exports = {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'comma-dangle': ['error', 'always-multiline'],
-        'semi': ['error', 'never'],
+        'semi': ['error', 'always'],
         'no-extra-semi': 'error',
         'indent': ['error', 4],
         'quotes': ['error', 'single', { 'avoidEscape': true }],
@@ -50,4 +50,4 @@ module.exports = {
     parserOptions: {
         parser: 'babel-eslint',
     },
-}
+};
