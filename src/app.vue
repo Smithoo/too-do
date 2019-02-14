@@ -4,8 +4,22 @@
             <router-link to="/">Home</router-link>
         </div>
         <router-view/>
+        <modal></modal>
+        <snackbar></snackbar>
     </div>
 </template>
+
+<script>
+import Modal from '@/views/layouts/modal.vue';
+import Snackbar from '@/views/layouts/snackbar.vue';
+
+export default {
+    components: {
+        Modal,
+        Snackbar,
+    },
+};
+</script>
 
 <style lang="scss">
 html, body {

@@ -18,7 +18,7 @@ export default {
         },
         modalData() {
             return this.$store.state.ui.modal.data;
-        }
+        },
     },
     methods: {
         hide() {
