@@ -46,6 +46,9 @@ module.exports = {
         'one-var': ['error', 'never'],
         'no-empty': 'error',
         'no-cond-assign': ['error', 'always'],
+        'no-unused-vars': 'error',
+        'no-shadow': 'error',
+        'eol-last': ['error', 'always'],
     },
     parserOptions: {
         parser: 'babel-eslint',

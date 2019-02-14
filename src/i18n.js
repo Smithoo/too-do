@@ -7,5 +7,5 @@ export default new VueI18n({
     locale: 'en',
     fallbackLocale: 'en',
     messages: {},
-    silentTranslationWarn: true // disable warning when using fallback locale
+    silentTranslationWarn: true, // disable warning when using fallback locale
 });

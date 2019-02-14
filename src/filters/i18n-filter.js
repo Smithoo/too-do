@@ -8,5 +8,5 @@ export default {
         }
 
         return i18n.t(key, values);
-    }
+    },
 };
