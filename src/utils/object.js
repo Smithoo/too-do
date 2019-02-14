@@ -1,4 +1,8 @@
 export const objectUtil = {
+    isObject(item) {
+        return (item && typeof item === 'object' && !Array.isArray(item));
+    },
+
     isEmpty(obj) {
         return Object.keys(obj).length === 0;
     },
@@ -19,6 +23,24 @@ export const objectUtil = {
         return Object.entries(obj).some(([key, value]) => {
             return callback(value, key, obj);
         });
+    },
+
+    assignDeep(target, source) {
+        if (objectUtil.isObject(target) && objectUtil.isObject(source)) {
+            Object.keys(source).forEach((key) => {
+                if (objectUtil.isObject(source[key])) {
+                    if (!(key in target)) {
+                        Object.assign(target, { [key]: source[key] });
+                    } else {
+                        target[key] = objectUtil.assignDeep(target[key], source[key]);
+                    }
+                } else {
+                    Object.assign(target, { [key]: source[key] });
+                }
+            });
+        }
+
+        return target;
     },
 };
 
