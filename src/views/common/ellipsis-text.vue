@@ -7,7 +7,7 @@
 <style scoped>
 .ellipsis-text {
     display: inline-block;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     vertical-align: bottom;

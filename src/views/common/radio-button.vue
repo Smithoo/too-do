@@ -5,7 +5,8 @@
             :id="id"
             :name="name"
             :value="value"
-            :checked="checked"
+            :checked="isChecked"
+            :disabled="disabled"
             @focus="onFocus"
             @blur="onBlur"
             @change="onChange">
@@ -18,23 +19,44 @@
 
 <script>
 export default {
+    model: {
+        prop: 'val',
+        event: 'change',
+    },
     props: {
         checked: {
             type: Boolean,
         },
+        disabled: {
+            type: Boolean,
+        },
         name: {
             type: String,
-            required: true
+            required: true,
         },
         value: {
             type: String,
-            required: true
+            required: true,
         },
+        val: {
+            type: String,
+        },
+    },
+    data() {
+        return {
+            isChecked: false,
+        };
     },
     computed: {
         id() {
             return `radio-${this.value}`;
         },
+    },
+    mounted() {
+        if (this.checked || this.val === this.value) {
+            this.isChecked = true;
+            this.$emit('change', this.value);
+        }
     },
     methods: {
         onFocus(event) {
@@ -43,10 +65,10 @@ export default {
         onBlur(event) {
             this.$emit('emit', event);
         },
-        onChange(event) {
+        onChange() {
             this.$emit('change', this.value);
-        }
-    }
+        },
+    },
 };
 </script>
 
@@ -64,6 +86,13 @@ export default {
     cursor: pointer;
     opacity: 0;
     z-index: 1;
+}
+.radio-input:disabled~.radio-label::before {
+    background: #ffffff;
+    border: 1px solid #c0c0c0;
+}
+.radio-input:disabled~.radio-label {
+    color: #c0c0c0;
 }
 .radio-input:checked~.radio-label::before {
     background: radial-gradient(#00c73c 36%,#00ae34 40%,#fff 47%);
