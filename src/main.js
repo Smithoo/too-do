@@ -3,14 +3,13 @@ import App from './app.vue';
 import router from './router';
 import store from './stores';
 import filters from './filters';
-
-Vue.config.productionTip = false;
+import api from './api';
 
 class TooDo {
     async bootstrap() {
         await this.loadStaticResources();
         this.addVueFilters();
-        this.initView();
+        this.initVue();
     }
 
     loadStaticResources() {
@@ -27,7 +26,11 @@ class TooDo {
         });
     }
 
-    initView() {
+    initVue() {
+        Vue.config.productionTip = false;
+
+        Vue.prototype.$api = api;
+
         new Vue({
             router,
             store,
