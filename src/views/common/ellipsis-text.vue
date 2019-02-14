@@ -1,14 +1,15 @@
 <template>
-    <div>
-        ELLIPSIS TEXT
-    </div>
+    <span class="ellipsis-text">
+        <slot></slot>
+    </span>
 </template>
 
-<script>
-export default {
-};
-</script>
-
-<style>
-
+<style scoped>
+.ellipsis-text {
+    display: inline-block;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+}
 </style>
