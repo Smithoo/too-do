@@ -14,7 +14,7 @@ class TooDo {
     }
 
     loadStaticResources() {
-        const style = import(/* webpackChunkName: "style" */ './loaders/style-loader');
+        const style = import(/* webpackChunkName: "style" */ './assets/loaders/style-loader');
 
         return Promise.all([style]);
     }
