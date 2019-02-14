@@ -1,4 +1,4 @@
-export default {
+export const colorUtil = {
     getRandomBrightColor() {
         const letters = 'ABCDEF';
         const lettersLength = letters.length;
@@ -9,3 +9,5 @@ export default {
         return color;
     },
 };
+
+export default colorUtil;

@@ -1,7 +1,7 @@
 const validUrlRegex = /((https?):\/\/)([-가-힣]|\w)+(?:[/.:@]([-가-힣]|\w)+)+\/?([^\n]*)$/i;
 const protocolRegex = /^((http|https|ftp|mailto|tel):(?:\/\/)?)/;
 
-export default {
+export const urlUtil = {
     isValidURL(url) {
         return validUrlRegex.test(url);
     },
@@ -21,3 +21,5 @@ export default {
         return /data:image\/png/.test(src);
     },
 };
+
+export default urlUtil;
