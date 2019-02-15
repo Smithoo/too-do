@@ -39,6 +39,7 @@ export default {
         return {
             selected: [],
             checkedNames: [],
+            test: '',
         };
     },
 };
