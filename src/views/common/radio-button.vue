@@ -20,15 +20,17 @@
 <script>
 export default {
     model: {
-        prop: 'val',
+        prop: 'inputValue',
         event: 'change',
     },
     props: {
         checked: {
             type: Boolean,
+            default: false,
         },
         disabled: {
             type: Boolean,
+            default: false,
         },
         name: {
             type: String,
@@ -38,7 +40,7 @@ export default {
             type: String,
             required: true,
         },
-        val: {
+        inputValue: {
             type: String,
         },
     },
@@ -53,7 +55,7 @@ export default {
         },
     },
     mounted() {
-        if (this.checked || this.val === this.value) {
+        if (this.checked || this.inputValue === this.value) {
             this.isChecked = true;
             this.$emit('change', this.value);
         }
