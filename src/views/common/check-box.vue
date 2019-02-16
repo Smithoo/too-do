@@ -4,7 +4,7 @@
             class="checkbox-input"
             :id="id"
             :value="value"
-            :checked="checked"
+            :checked="isChecked"
             :disabled="disabled"
             @focus="onFocus"
             @blur="onBlur"
@@ -17,22 +17,48 @@
 </template>
 
 <script>
+import { arrayUtil } from '@/utils';
+import { setTimeout } from 'timers';
+
 export default {
     model: {
-        prop: 'checked',
+        prop: 'inputValue',
         event: 'change',
     },
-    props: ['checked', 'disabled', 'value'],
+    props: {
+        checked: {
+            type: Boolean,
+            default: false,
+        },
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
+        value: String,
+        inputValue: null,
+    },
+    data() {
+        return {
+            isChecked: false,
+        };
+    },
     computed: {
         id() {
             return `checkbox-${this.value}`;
         },
+        internalValue() {
+            return this.value ? this.value : this.isChecked;
+        },
     },
     mounted() {
-        // if (this.checked || this.val === this.value) {
-        //     this.isChecked = true;
-        //     this.$emit('change', this.value);
-        // }
+        if (this.checked || this.inputValue === true ||
+            (arrayUtil.isArray(this.inputValue) && this.inputValue.includes(this.internalValue))) {
+            this.isChecked = true;
+
+            if (this.checked) {
+                setTimeout(this.onChange, 0);
+            }
+        }
     },
     methods: {
         onFocus(event) {
@@ -42,12 +68,25 @@ export default {
             this.$emit('emit', event);
         },
         onChange(event) {
-            this.$emit('change', event.target.checked);
+            this.isChecked = event ? event.target.checked : this.isChecked;
+            let emitValue = this.internalValue;
+
+            if (typeof(this.internalValue) !== 'boolean' &&
+                arrayUtil.isArray(this.inputValue)) {
+
+                emitValue = this.inputValue.filter(item => item !== this.internalValue);
+
+                if (emitValue.length === this.inputValue.length) {
+                    emitValue.push(this.internalValue);
+                }
+            }
+
+            this.$emit('change', emitValue);
         },
     },
 };
 </script>
 
-<style scoped`>
+<style scoped>
 
 </style>
