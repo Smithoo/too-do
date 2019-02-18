@@ -28,7 +28,7 @@ describe('Injector', () => {
 
             // then
             expect(injector.specs).toEqual({});
-            expect(Object.keys(injector.registry).length).toBe(0); 
+            expect(Object.keys(injector.registry).length).toBe(0);
         });
 
         it('Injector에 모듈 스펙을 등록할 수 있다', () => {

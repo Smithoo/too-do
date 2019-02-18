@@ -218,7 +218,7 @@ describe('object util', () => {
         it('nested 된 object를 assign 할 수 있다', () => {
             // given
             const target = { a: { c: 3 } };
-            const source = { a: { c: 4, d: 5} };
+            const source = { a: { c: 4, d: 5 } };
 
             // when
             const result = objectUtil.assignDeep(target, source);

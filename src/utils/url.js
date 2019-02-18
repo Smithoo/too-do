@@ -14,7 +14,7 @@ export const urlUtil = {
         if (result && protocolRegex.test(result) === false) {
             result = 'http://' + result;
         }
-        
+
         if (this.isValidURL(result) === false) {
             return url;
         }

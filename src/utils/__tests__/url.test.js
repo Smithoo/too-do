@@ -58,33 +58,33 @@ describe('url util', () => {
     describe('refineUrl', () => {
         it('양옆 스페이스를 제거할 수 있다', () => {
             // given
-            const url = '   http://smithoo.com/    '
-            
+            const url = '   http://smithoo.com/    ';
+
             // when
             const result = urlUtil.refineUrl(url);
-            
+
             // then
             expect(result).toBe('http://smithoo.com/');
         });
 
         it('유효하지 않은 url은 그대로 반환된다', () => {
             // given
-            const url = 'smithoom'
-            
+            const url = 'smithoom';
+
             // when
             const result = urlUtil.refineUrl(url);
-            
+
             // then
             expect(result).toBe('smithoom');
         });
 
         it('프로토콜이 없다면 기본 http를 추가해준다', () => {
             // given
-            const url = 'smithoo.com'
-            
+            const url = 'smithoo.com';
+
             // when
             const result = urlUtil.refineUrl(url);
-            
+
             // then
             expect(result).toBe('http://smithoo.com');
         });

@@ -6,7 +6,7 @@ describe('colorUtil', () => {
             // given
             // when
             const colorCode = colorUtil.getRandomBrightColor();
-            
+
             // then
             expect(colorCode.length).toBe(7);
         });
