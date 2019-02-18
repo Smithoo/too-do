@@ -3,3 +3,5 @@ export const arrayUtil = {
         return Array.isArray(arr);
     },
 };
+
+export default arrayUtil;

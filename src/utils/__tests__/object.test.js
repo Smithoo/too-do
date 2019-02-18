@@ -1,7 +1,23 @@
 import objectUtil from './../object';
 
-describe('object util >', () => {
-    describe('isEmpty >', () => {
+describe('object util', () => {
+    describe('isObject', () => {
+        it('object인지 알 수 있다', () => {
+            // given
+            const obj = { a: 1 };
+            const notObj = [1, 2, 3];
+
+            // when
+            const isObject = objectUtil.isObject(obj);
+            const isNotObject = objectUtil.isObject(notObj);
+
+            // then
+            expect(isObject).toBe(true);
+            expect(isNotObject).toBe(false);
+        });
+    });
+
+    describe('isEmpty', () => {
         it('object가 비어 있다면 true를 반환한다', () => {
             // given
             const obj = {};
@@ -27,7 +43,7 @@ describe('object util >', () => {
         });
     });
 
-    describe('forEach >', () => {
+    describe('forEach', () => {
         it('빈 object는 순회하지 않는다', () => {
             // given
             const obj = {};
@@ -60,7 +76,7 @@ describe('object util >', () => {
         });
     });
 
-    describe('every >', () => {
+    describe('every', () => {
         it('빈 object에 대해서는 true를 반환한다', () => {
             // given
             const obj = {};
@@ -111,7 +127,7 @@ describe('object util >', () => {
         });
     });
 
-    describe('some >', () => {
+    describe('some', () => {
         it('빈 object에 대해서는 false를 반환한다', () => {
             // given
             const obj = {};
@@ -161,4 +177,67 @@ describe('object util >', () => {
             expect(callback.mock.calls.length).toBe(1);
         });
     });
+
+    describe('assignDeep', () => {
+        it('target이 object가 아니면 assign하지 않는다', () => {
+            // given
+            const target = 3;
+            const source = { a: 1 };
+
+            // when
+            const result = objectUtil.assignDeep(target, source);
+
+            // then
+            expect(result).toBe(target);
+        });
+
+        it('source가 object가 아니면 assign하지 않는다', () => {
+            // given
+            const target = { a: 1 };
+            const source = 1;
+
+            // when
+            const result = objectUtil.assignDeep(target, source);
+
+            // then
+            expect(result).toBe(target);
+        });
+
+        it('object를 assign 할 수 있다', () => {
+            // given
+            const target = { a: 1 };
+            const source = { a: 2, b: 3 };
+
+            // when
+            const result = objectUtil.assignDeep(target, source);
+
+            // then
+            expect(result).toEqual({ a: 2, b: 3 });
+        });
+
+        it('nested 된 object를 assign 할 수 있다', () => {
+            // given
+            const target = { a: { c: 3 } };
+            const source = { a: { c: 4, d: 5} };
+
+            // when
+            const result = objectUtil.assignDeep(target, source);
+
+            // then
+            expect(result).toEqual({ a: { c: 4, d: 5 } });
+        });
+
+        it('nested 된 object에 assign으로 프로퍼티를 추가할 수 있다', () => {
+            // given
+            const target = { a: { c: 3 } };
+            const source = { a: { c: 4, d: 5 }, b: { e: 9 } };
+
+            // when
+            const result = objectUtil.assignDeep(target, source);
+
+            // then
+            expect(result).toEqual({ a: { c: 4, d: 5 }, b: { e: 9 } });
+        });
+    });
+
 });

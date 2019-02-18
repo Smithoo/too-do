@@ -5,20 +5,21 @@ export const urlUtil = {
     isValidURL(url) {
         return validUrlRegex.test(url);
     },
-    refineUrl(url = '') {
-        url = url.trim();
-        if (url && protocolRegex.test(url) === false) {
-            url = 'http://' + url;
-        }
+    isDataURIImage(src) {
+        return /data:image\/(jpeg|png|gif)/.test(src);
+    },
+    refineUrl(url) {
+        let result = url.trim();
 
-        if (this.isValidURL(url)) {
+        if (result && protocolRegex.test(result) === false) {
+            result = 'http://' + result;
+        }
+        
+        if (this.isValidURL(result) === false) {
             return url;
         }
 
-        return '';
-    },
-    isDataURIImage(src) {
-        return /data:image\/png/.test(src);
+        return result;
     },
 };
 

@@ -1,6 +1,6 @@
 import { Injector } from './../injector';
 
-describe('Injector >', () => {
+describe('Injector', () => {
     let injector;
 
     class ModuleA {
@@ -20,7 +20,17 @@ describe('Injector >', () => {
         injector = null;
     });
 
-    describe('set >', () => {
+    describe('set', () => {
+        it('Injector에 빈 모듈 스펙을 등록할 수 있다', () => {
+            // given
+            // when
+            injector.set();
+
+            // then
+            expect(injector.specs).toEqual({});
+            expect(Object.keys(injector.registry).length).toBe(0); 
+        });
+
         it('Injector에 모듈 스펙을 등록할 수 있다', () => {
             // given
             class DummyClass {}
@@ -104,7 +114,7 @@ describe('Injector >', () => {
         });
     });
 
-    describe('get >', () => {
+    describe('get', () => {
         it('존재하지 않는 모듈을 가져오면 null을 반환한다', () => {
             // given
             // when
@@ -232,7 +242,7 @@ describe('Injector >', () => {
         });
     });
 
-    describe('destroy >', () => {
+    describe('destroy', () => {
         it('injector 내부 변수들을 파괴할 수 있다', () => {
             // given
             class DummyClass {}
