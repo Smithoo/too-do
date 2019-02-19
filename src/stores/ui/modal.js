@@ -5,14 +5,6 @@ export default {
         component: null,
         data: null,
     },
-    getters: {
-        show(state) {
-            return state.show;
-        },
-        component(state) {
-            return state.component;
-        },
-    },
     mutations: {
         show(state, { component = null, data = null }) {
             state.data = data;

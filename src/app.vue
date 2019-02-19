@@ -6,20 +6,17 @@
         <router-view/>
         <modal></modal>
         <snackbar></snackbar>
-        <slide-panel position="left"></slide-panel>
     </div>
 </template>
 
 <script>
 import Modal from '@/views/layouts/modal.vue';
 import Snackbar from '@/views/layouts/snackbar.vue';
-import SlidePanel from '@/views/layouts/slide-panel.vue';
 
 export default {
     components: {
         Modal,
         Snackbar,
-        SlidePanel,
     },
 };
 </script>
