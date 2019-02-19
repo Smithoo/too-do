@@ -15,7 +15,7 @@ export default {
     computed: {
         positionStyle() {
             switch (this.position) {
-                case 'top': 
+                case 'top':
                     return { top: 0, left: 0, width: '100%' };
                 case 'left':
                     return { top: 0, left: 0, height: '100%' };
@@ -26,7 +26,7 @@ export default {
                 default:
                     return { top: 0, left: 0, height: '100%' };
             }
-        }
+        },
     },
 };
 </script>

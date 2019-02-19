@@ -14,7 +14,7 @@ module.exports = {
         'comma-dangle': ['error', 'always-multiline'],
         'semi': ['error', 'always'],
         'no-extra-semi': 'error',
-        'indent': ['error', 4],
+        'indent': ['error', 4, { 'SwitchCase': 1 }],
         'quotes': ['error', 'single', { 'avoidEscape': true }],
         'object-curly-spacing': ['error', 'always'],
         'array-bracket-spacing': ['error', 'never'],
