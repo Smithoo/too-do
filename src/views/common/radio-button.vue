@@ -1,5 +1,7 @@
 <template>
-    <span class="radio-button">
+    <span class="radio-button" :class="{ disabled: disabled }">
+        <i v-if="isChecked" class="material-icons">radio_button_checked</i>
+        <i v-else class="material-icons">radio_button_unchecked</i>
         <input type="radio"
             class="radio-input"
             :id="id"
@@ -44,19 +46,16 @@ export default {
             type: String,
         },
     },
-    data() {
-        return {
-            isChecked: false,
-        };
-    },
     computed: {
         id() {
             return `radio-${this.value}`;
         },
+        isChecked() {
+            return this.inputValue === this.value;
+        },
     },
     mounted() {
         if (this.checked || this.inputValue === this.value) {
-            this.isChecked = true;
             this.$emit('change', this.value);
         }
     },
@@ -81,39 +80,33 @@ export default {
     margin-left: 4px;
     margin-right: 4px;
 }
+.radio-button i {
+    width: 24px;
+    height: 24px;
+    color: #3070ff;
+}
+.radio-button.disabled i {
+    color: #a0a0a0;
+}
 .radio-input {
     position: absolute;
     top: 0;
     left: 0;
-    cursor: pointer;
+    margin: 0;
+    width: 24px;
+    height: 24px;
     opacity: 0;
     z-index: 1;
-}
-.radio-input:disabled~.radio-label::before {
-    background: #ffffff;
-    border: 1px solid #c0c0c0;
-}
-.radio-input:disabled~.radio-label {
-    color: #c0c0c0;
-}
-.radio-input:checked~.radio-label::before {
-    background: radial-gradient(#00c73c 36%,#00ae34 40%,#fff 47%);
-}
-.radio-label::before {
-    position: relative;
-    top: -1px;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 7px;
-    border: 1px solid #bcbcbc;
-    border-radius: 50%;
-    background: #ffffff;
-    vertical-align: top;
-    content: '';
-}
-.radio-label {
-    display: inline-block;
     cursor: pointer;
+}
+.radio-button .radio-label {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 24px;
+    cursor: pointer;
+    vertical-align: top;
+}
+.radio-button.disabled .radio-label {
+    color: #a0a0a0;
 }
 </style>
