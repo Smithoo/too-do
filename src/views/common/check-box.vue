@@ -1,5 +1,7 @@
 <template>
-    <span class="check-box">
+    <span class="check-box" :class="{ disabled: disabled }">
+        <i v-if="isChecked" class="material-icons">check_box</i>
+        <i v-else class="material-icons">check_box_outline_blank</i>
         <input type="checkbox"
             class="checkbox-input"
             :id="id"
@@ -17,8 +19,7 @@
 </template>
 
 <script>
-import { arrayUtil } from '@/utils';
-import { setTimeout } from 'timers';
+import { arrayUtil, stringUtil } from '@/utils';
 
 export default {
     model: {
@@ -34,7 +35,10 @@ export default {
             type: Boolean,
             default: false,
         },
-        value: String,
+        value: {
+            type: String,
+            default: '',
+        },
         inputValue: null,
     },
     data() {
@@ -44,7 +48,8 @@ export default {
     },
     computed: {
         id() {
-            return `checkbox-${this.value}`;
+            const idStr = this.value ? this.value : stringUtil.createId();
+            return `checkbox-${idStr}`;
         },
         internalValue() {
             return this.value ? this.value : this.isChecked;
@@ -88,5 +93,39 @@ export default {
 </script>
 
 <style scoped>
-
+.check-box {
+    position: relative;
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.check-box i {
+    width: 24px;
+    height: 24px;
+    color: #3070ff;
+}
+.check-box.disabled i {
+    color: #a0a0a0;
+}
+.checkbox-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+.check-box .checkbox-label {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 24px;
+    cursor: pointer;
+    vertical-align: top;
+}
+.check-box.disabled .checkbox-label {
+    color: #a0a0a0;
+}
 </style>
