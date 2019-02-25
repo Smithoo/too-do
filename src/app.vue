@@ -1,6 +1,8 @@
 <template>
     <div id="app">
-        <select-box :items="items" v-model="selected"></select-box>
+        <select-box :items="items"
+            v-model="selected">
+        </select-box>
         <div>
             selected: {{ selected }}
         </div>
