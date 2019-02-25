@@ -1,11 +1,5 @@
 <template>
     <div id="app">
-        <select-box :items="items"
-            v-model="selected">
-        </select-box>
-        <div>
-            selected: {{ selected }}
-        </div>
         <router-view/>
         <modal></modal>
         <snackbar></snackbar>
@@ -15,24 +9,11 @@
 <script>
 import Modal from '@/views/layouts/modal.vue';
 import Snackbar from '@/views/layouts/snackbar.vue';
-import SelectBox from '@/views/common/select-box.vue';
 
 export default {
     components: {
         Modal,
         Snackbar,
-        SelectBox,
-    },
-    data() {
-        return {
-            items: [
-                { label: 'A', value: 'a' },
-                { label: 'B', value: 'b' },
-                { label: 'C', value: 'c' },
-                { label: 'D', value: 'd' },
-            ],
-            selected: null,
-        };
     },
 };
 </script>
