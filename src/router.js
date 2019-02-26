@@ -13,6 +13,10 @@ export default new Router({
         },
         {
             path: '/board',
+            redirect: '/board/all',
+        },
+        {
+            path: '/board/:colomn',
             component: () => import(/* webpackChunkName: 'board' */ './views/pages/board.vue'),
         },
         {
