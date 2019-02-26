@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="board">
         BOARD
     </div>
 </template>
@@ -9,6 +9,9 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+.board {
+    background-color: #f6f6f6;
+    height: 100%;
+}
 </style>
