@@ -1,11 +1,16 @@
 <template>
     <div class="board">
-        BOARD
+        <side-panel/>
     </div>
 </template>
 
 <script>
+import SidePanel from '@/views/components/board/side-panel/side-panel.vue';
+
 export default {
+    components: {
+        SidePanel,
+    },
 };
 </script>
 

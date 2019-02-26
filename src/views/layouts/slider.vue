@@ -1,6 +1,6 @@
 <template>
     <div class="slider"
-        :style="[positionStyle, sizeStyle]">
+        :style="[sizeStyle]">
         <div v-if="dim && isOpen"
             class="dim"
             :class="{ dimOn: dimOn }"
@@ -14,6 +14,9 @@
 </template>
 
 <script>
+// Slider는 잠시 보류
+// TODO: relative slider와 absolute slider 구분
+// TODO: slider contents absolute 처리 및 transition
 import sliderStore from '@/stores/ui/slider';
 
 export default {
@@ -24,7 +27,7 @@ export default {
         },
         position: {
             type: String,
-            required: true,
+            default: 'left',
         },
         dim: {
             type: Boolean,
@@ -75,12 +78,12 @@ export default {
             }
         },
         transformStyle() {
-            if (this.isOpen) {
+            if (!this.isOpen) {
                 switch (this.position) {
                     case 'top':
                         return { transform: `translateY(${this.slotSize})` };
                     case 'left':
-                        return { transform: `translateX(${this.slotSize})` };
+                        return { transform: `translateX(-${this.slotSize})` };
                     case 'right':
                         return { transform: `translateX(-${this.slotSize})` };
                     case 'bottom':
@@ -97,7 +100,7 @@ export default {
             return { transitionDuration: duration };
         },
     },
-    mounted() {
+    beforeMount() {
         if (!this.$store.state.ui[this.name]) {
             this.$store.registerModule(['ui', this.name], sliderStore);
         }
@@ -130,15 +133,15 @@ export default {
 
 <style scoped>
 .slider {
-    position: fixed;
-    z-index: 100;
+    position: relative;
+    z-index: 1000;
 }
 .dim {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.25)
 }
@@ -147,8 +150,9 @@ export default {
     transition: opacity 0.5s;
 }
 .slider-contents {
-    position: relative;
-    z-index: 101;
+    position: absolute;
+    top: 0;
+    left: 0;
     transition-property: transform;
 }
 </style>
