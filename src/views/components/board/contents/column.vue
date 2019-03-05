@@ -56,8 +56,8 @@ export default {
 
 <style scoped>
 section {
+    display: inline-block;
     position: relative;
-    float: left;
     box-sizing: border-box;
     padding-left: 12px;
     height: 100%;

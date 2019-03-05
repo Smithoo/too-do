@@ -27,8 +27,8 @@
 
 <script>
 import { urlUtil } from '@/utils';
-import EllipsisText from '@/components/common/ellipsis-text.vue';
-import Tag from '@/components/common/tag.vue';
+import EllipsisText from '@/views/common/ellipsis-text.vue';
+import Tag from '@/views/common/tag.vue';
 
 export default {
     components: {
