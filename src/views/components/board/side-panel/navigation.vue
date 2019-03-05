@@ -1,10 +1,10 @@
 <template>
     <nav class="navigation">
         <ul>
-            <li><router-link to="/">All</router-link></li>
-            <li><router-link to="/todo">To Do</router-link></li>
-            <li><router-link to="/doing">Doing</router-link></li>
-            <li><router-link to="/done">Done</router-link></li>
+            <li><router-link to="/board/all">All</router-link></li>
+            <li><router-link to="/board/todo">To Do</router-link></li>
+            <li><router-link to="/board/doing">Doing</router-link></li>
+            <li><router-link to="/board/done">Done</router-link></li>
         </ul>
     </nav>
 </template>
