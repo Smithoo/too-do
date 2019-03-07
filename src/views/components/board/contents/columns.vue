@@ -1,6 +1,6 @@
 <template>
     <section class="columns">
-        <draggable
+        <!-- <draggable
             v-model="columns"
             handle=".handle"
             group="columns"
@@ -22,7 +22,7 @@
             </div>
         </draggable>
         <column name="s"/>
-        <column name="s"/>
+        <column name="s"/> -->
         <add-column/>
     </section>
 </template>
