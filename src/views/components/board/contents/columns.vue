@@ -6,7 +6,7 @@
             group="columns"
             ghost-class="ghost"
             @change="log">
-            <div class="column" v-for="column in columns" :key="column.name">
+            <div class="column" v-for="column in columns" :key="column.id">
                 <div class="handle">
                     <h3>{{ column.name }}</h3>
                 </div>
@@ -28,23 +28,23 @@
 </template>
 
 <script>
-import Column from './column.vue';
+// import Column from './column.vue';
 import AddColumn from './add-column.vue';
-import Draggable from 'vuedraggable';
+// import Draggable from 'vuedraggable';
 
 export default {
     components: {
-        Column,
+        // Column,
         AddColumn,
-        Draggable,
+        // Draggable,
     },
     data() {
         return {
             columns: [
-                { name: 'col1', list: ['a1', 'a2', 'a3'] },
-                { name: 'col2', list: ['b1', 'b2', 'b3'] },
-                { name: 'col3', list: ['c1', 'c2', 'c3'] },
-                { name: 'col4', list: ['d1', 'd2', 'd3'] },
+                { id: 'co1', name: 'col1', list: ['a1', 'a2', 'a3'] },
+                { id: 'co2', name: 'col2', list: ['b1', 'b2', 'b3'] },
+                { id: 'co3', name: 'col3', list: ['c1', 'c2', 'c3'] },
+                { id: 'co4', name: 'col4', list: ['d1', 'd2', 'd3'] },
             ],
         };
     },
