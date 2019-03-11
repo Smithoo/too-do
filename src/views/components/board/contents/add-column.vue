@@ -20,16 +20,21 @@
                         v-model="columnName"
                         @keydown.enter="addColumn"
                         @keydown.esc="changeIntoAddMode"
+                        placeholder="column name"
                         />
                     <button type="button"
                         class="confirm"
                         @click="addColumn"
-                        :disabled="addDisabled">
+                        :disabled="addDisabled"
+                    >
                         confirm
                     </button>
-                </div>
-                <div class="card-count">
-                    0 cards
+                    <button type="button"
+                        class="cancel"
+                        @click="changeIntoAddMode"
+                    >
+                        cancel
+                    </button>
                 </div>
             </div>
         </div>
@@ -85,6 +90,7 @@ export default {
         },
         addColumn() {
             if (!this.columnName) {
+                this.$store.dispatch('ui/snackbar/show', { msg: 'No column name!', style: 'error' });
                 return;
             }
 
@@ -194,14 +200,31 @@ h3 {
     letter-spacing: 2px;
     padding-bottom: 6px;
 }
-.card-count {
-    color: #666666;
-    font-size: 12px;
-    padding-left: 3px;
-    padding-bottom: 20px;
-}
 .edit .confirm:disabled {
     color: red;
+}
+.name input {
+    width: 100px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+.name button {
+    width: 50px;
+    height: 24px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 600;
+    margin-left: 3px;
+}
+.name button.confirm {
+    background-color: steelblue;
+}
+.name button.cancel {
+    background-color: tomato;
 }
 </style>
 
