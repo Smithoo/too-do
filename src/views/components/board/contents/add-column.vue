@@ -70,7 +70,7 @@ export default {
             const isDuplicatedName = this.columnName === 'aaa';
             if (isDuplicatedName) {
                 this.addDisabled = true;
-                this.$store.dispatch('ui/snackbar/show', { msg: 'Duplicated name!', style: 'error' });
+                this.$store.dispatch('ui/snackbar/error', { msg: 'Duplicated name!' });
             } else {
                 this.addDisabled = false;
             }
@@ -90,7 +90,8 @@ export default {
         },
         addColumn() {
             if (!this.columnName) {
-                this.$store.dispatch('ui/snackbar/show', { msg: 'No column name!', style: 'error' });
+                this.$store.dispatch('ui/snackbar/warn', { msg: 'No column name!' });
+                this.$refs.input.focus();
                 return;
             }
 
@@ -108,7 +109,7 @@ export default {
                     // this.$store.dispatch('data/addColumn', this.columnName);
                 })
                 .catch(() => {
-                    this.$store.dispatch('ui/snackbar/show', { msg: 'Fail adding column!' });
+                    this.$store.dispatch('ui/snackbar/error', { msg: 'Fail adding column!' });
                 })
                 .finally(() => {
                     this.isLoading = false;

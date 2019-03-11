@@ -22,6 +22,18 @@ export default {
         },
     },
     actions: {
+        info({ dispatch }, payload) {
+            const style = 'info';
+            dispatch('show', Object.assign({}, payload, { style }));
+        },
+        warn({ dispatch }, payload) {
+            const style = 'warn';
+            dispatch('show', Object.assign({}, payload, { style }));
+        },
+        error({ dispatch }, payload) {
+            const style = 'error';
+            dispatch('show', Object.assign({}, payload, { style }));
+        },
         show({ commit, state }, payload) {
             const duration = payload.duration ? payload.duration : 2500;
             const timeout = setTimeout(() => {
