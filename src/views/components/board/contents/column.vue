@@ -15,7 +15,11 @@
                     @start="dragging = true"
                     @end="dragging = false"
                 >
-                    <transition-group type="transition" :name="!dragging ? 'flip-list' : null">
+                    <transition-group
+                        tag="div"
+                        type="transition"
+                        :name="!dragging ? 'flip-list' : null"
+                    >
                         <card v-for="card in column.cards"
                             :key="card.id"
                             :card="card">

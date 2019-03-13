@@ -7,7 +7,11 @@
             @start="dragging = true"
             @end="dragging = false"
         >
-            <transition-group type="transition" :name="!dragging ? 'flip-list' : null">
+            <transition-group
+                tag="div"
+                type="transition"
+                :name="!dragging ? 'flip-list' : null"
+            >
                 <column
                     v-for="column in columns"
                     :key="column.id"

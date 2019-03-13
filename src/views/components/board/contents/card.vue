@@ -11,7 +11,9 @@
                 <button type="button">
                     <i class="material-icons md-12">link</i>
                 </button>
-                <ellipsis-text>{{ card.url }}</ellipsis-text>
+                <div class="card-url-text">
+                    <ellipsis-text>{{ card.url }}</ellipsis-text>
+                </div>
             </a>
         </div>
         <div v-if="this.card.tags && this.card.tags.length" class="card-tags">
@@ -63,7 +65,7 @@ export default {
 .card-desc {
     font-size: 13px;
     color: #888888;
-    padding-top: 10px;
+    margin-top: 10px;
     line-height: 1.5;
     overflow: hidden;
     display: -webkit-box;
@@ -72,7 +74,8 @@ export default {
     -webkit-box-orient: vertical;
 }
 .card-url {
-    padding-top: 6px;
+    position: relative;
+    margin-top: 8px;
 }
 .card-url a {
     color: #6d6d6d;
@@ -89,11 +92,22 @@ export default {
 }
 .card-url button {
     position: relative;
-    margin-right: 6px;
-    width: 21px;
-    height: 21px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     border: 1px solid #dddddd;
+}
+.card-url .card-url-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 26px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.card-url .card-url-text span {
+    position: relative;
+    top: 1px;
 }
 .card-url:hover button {
     background-color: #7d7d7d;
@@ -107,7 +121,7 @@ export default {
     color: #ffffff;
 }
 .card-tags {
-    padding-top: 10px;
+    margin-top: 10px;
 }
 .card-context-btn {
     position: absolute;
