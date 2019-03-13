@@ -66,7 +66,6 @@ export default {
     padding-top: 10px;
     line-height: 1.5;
     overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
     max-height: 45px;      /* fallback */
     -webkit-line-clamp: 2; /* number of lines to show */
@@ -80,7 +79,6 @@ export default {
     font-size: 12px;
     line-height: 1.5;
     overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
     max-height: 24px;      /* fallback */
     -webkit-line-clamp: 1; /* number of lines to show */
