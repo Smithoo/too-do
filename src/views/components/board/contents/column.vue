@@ -1,20 +1,26 @@
 <template>
-    <section class="colomn">
-        <div class="colomn-wrap">
-            <div class="colomn-head">
-                <h3>{{ name }}</h3>
+    <section class="column">
+        <div class="column-wrap">
+            <div class="column-head handle">
+                <h3>{{ column.name }}</h3>
                 <div class="card-count">
-                    {{ cards.length }} cards
+                    {{ column.cards.length }} cards
                 </div>
             </div>
-            <div class="colomn-body">
-                <draggable class="cards"
+            <div class="column-body">
+                <draggable
+                    class="cards"
                     v-model="cards"
-                    :options="{ group: '.card' }">
-                    <card v-for="card in cards"
-                        :key="card.id"
-                        :card="card">
-                    </card>
+                    v-bind="dragOptions"
+                    @start="dragging = true"
+                    @end="dragging = false"
+                >
+                    <transition-group type="transition" :name="!dragging ? 'flip-list' : null">
+                        <card v-for="card in column.cards"
+                            :key="card.id"
+                            :card="card">
+                        </card>
+                    </transition-group>
                 </draggable>
             </div>
         </div>
@@ -22,54 +28,73 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable';
+import Draggable from 'vuedraggable';
 import Card from './card';
 
 export default {
     components: {
-        draggable,
+        Draggable,
         Card,
     },
     props: {
-        name: {
-            type: String,
+        column: {
             required: true,
         },
     },
     data() {
         return {
-            cards: [],
+            dragging: false,
         };
     },
-    // computed: {
-    //     cards: {
-    //         get() {
-    //             return this.$store.getters['data/' + this.name + '/cards'];
-    //         },
-    //         set(value) {
-    //             this.$store.dispatch('data/' + this.name + '/updateList', value);
-    //         },
-    //     },
-    // },
+    computed: {
+        cards: {
+            get() {
+                return this.$store.getters['board/cardsById'](this.column.id);
+            },
+            set(cards) {
+                const payload = {
+                    id: this.column.id,
+                    cards,
+                };
+                this.$store.commit('board/setCards', payload);
+            },
+        },
+        dragOptions() {
+            return {
+                animation: 200,
+                group: 'cards',
+                ghostClass: 'ghost-card',
+                disabled: false,
+            };
+        },
+    },
 };
 </script>
 
 <style scoped>
-section {
+section.column {
     display: inline-block;
     position: relative;
+    vertical-align: top;
     box-sizing: border-box;
-    padding-left: 12px;
+    padding: 10px 10px 10px 12px;
+    width: 240px;
     height: 100%;
 }
-.colomn-wrap {
-    border-radius: 4px;
+.column-wrap {
+    position: relative;
     box-sizing: border-box;
-    padding: 10px;
     height: 100%;
 }
-.colomn-head {
+.column-head {
+    position: absolute;
+    top: 0;
+    left: 0;
     padding-left: 6px;
+    width: 100%;
+    height: 60px;
+    box-sizing: border-box;
+    z-index: 10;
 }
 h3 {
     color: #333333;
@@ -83,9 +108,11 @@ h3 {
     padding-left: 3px;
     padding-bottom: 20px;
 }
-.colomn-body {
+.column-body {
     position: relative;
-    height: 77%;
+    height: 100%;
+    padding-top: 60px;
+    box-sizing: border-box;
 }
 .cards {
     height: 100%;
@@ -101,5 +128,11 @@ h3 {
     background-color: rgba(10, 10, 10, .15);
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
     box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+.flip-list-move {
+    transition: transform 0.5s;
+}
+.ghost-card {
+    opacity: 0.5;
 }
 </style>
