@@ -15,16 +15,10 @@
                     @start="dragging = true"
                     @end="dragging = false"
                 >
-                    <transition-group
-                        tag="div"
-                        type="transition"
-                        :name="!dragging ? 'flip-list' : null"
-                    >
-                        <card v-for="card in column.cards"
-                            :key="card.id"
-                            :card="card">
-                        </card>
-                    </transition-group>
+                    <card v-for="card in column.cards"
+                        :key="card.id"
+                        :card="card">
+                    </card>
                 </draggable>
             </div>
         </div>
@@ -132,9 +126,6 @@ h3 {
     background-color: rgba(10, 10, 10, .15);
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
     box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-}
-.flip-list-move {
-    transition: transform 0.5s;
 }
 .ghost-card {
     opacity: 0.5;

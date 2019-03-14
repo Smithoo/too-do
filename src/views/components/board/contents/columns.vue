@@ -7,18 +7,12 @@
             @start="dragging = true"
             @end="dragging = false"
         >
-            <transition-group
-                tag="div"
-                type="transition"
-                :name="!dragging ? 'flip-list' : null"
+            <column
+                v-for="column in columns"
+                :key="column.id"
+                :column="column"
             >
-                <column
-                    v-for="column in columns"
-                    :key="column.id"
-                    :column="column"
-                >
-                </column>
-            </transition-group>
+            </column>
         </draggable>
         <add-column/>
     </section>
@@ -86,8 +80,5 @@ export default {
 }
 .ghost-column {
     opacity: 0.5;
-}
-.flip-list-move {
-    transition: transform 0.5s;
 }
 </style>
