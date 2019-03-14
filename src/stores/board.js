@@ -1,25 +1,25 @@
 export default {
     namespaced: true,
     state: {
-        columns: [],
+        pipes: [],
     },
     getters: {
         cardsById: (state) => (id) => {
-            const targetColumn = state.columns.find((column) => column.id === id);
-            return targetColumn.cards;
+            const targetPipe = state.pipes.find((pipe) => pipe.id === id);
+            return targetPipe.cards;
         },
-        columnMetas(state) {
-            return state.columns.map((column) => ({ id: column.id, name: column.name }));
+        pipeMetas(state) {
+            return state.pipes.map((pipe) => ({ id: pipe.id, name: pipe.name }));
         },
     },
     mutations: {
-        setColumns(state, columns) {
-            state.columns = columns;
+        setPipes(state, pipes) {
+            state.pipes = pipes;
         },
         setCards(state, payload) {
             const { id, cards } = payload;
-            const targetColumn = state.columns.find((column) => column.id === id);
-            targetColumn.cards = cards;
+            const targetPipe = state.pipes.find((pipe) => pipe.id === id);
+            targetPipe.cards = cards;
         },
     },
 };

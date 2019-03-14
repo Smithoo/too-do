@@ -13,11 +13,18 @@ export default new Router({
         },
         {
             path: '/board',
+            component: () => import(/* webpackChunkName: 'board' */ './views/pages/board/board.vue'),
+            children: [
+                {
+                    path: 'all',
+                    component: () => import(/* webpackChunkName: 'board' */ './views/pages/board/all.vue'),
+                },
+                {
+                    path: ':pipeId',
+                    component: () => import(/* webpackChunkName: 'board' */ './views/pages/board/pipe.vue'),
+                },
+            ],
             redirect: '/board/all',
-        },
-        {
-            path: '/board/:colomnId',
-            component: () => import(/* webpackChunkName: 'board' */ './views/pages/board.vue'),
         },
         {
             path: '/terms',

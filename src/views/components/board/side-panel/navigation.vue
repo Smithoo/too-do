@@ -2,8 +2,8 @@
     <nav class="navigation">
         <ul>
             <li><router-link to="/board/all">All</router-link></li>
-            <li v-for="columnMeta in columnMetas" :key="columnMeta.id">
-                <router-link :to="getColumnUrl(columnMeta.id)">{{ columnMeta.name }}</router-link>
+            <li v-for="pipeMeta in pipeMetas" :key="pipeMeta.id">
+                <router-link :to="getPipeUrl(pipeMeta.id)">{{ pipeMeta.name }}</router-link>
             </li>
         </ul>
     </nav>
@@ -12,13 +12,13 @@
 <script>
 export default {
     computed: {
-        columnMetas() {
-            return this.$store.getters['board/columnMetas'];
+        pipeMetas() {
+            return this.$store.getters['board/pipeMetas'];
         },
     },
     methods: {
-        getColumnUrl(columnId) {
-            return `/board/${columnId}`;
+        getPipeUrl(pipeId) {
+            return `/board/${pipeId}`;
         },
     },
 };

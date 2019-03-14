@@ -1,38 +1,38 @@
 <template>
-    <section class="columns">
+    <section class="pipes">
         <draggable
-            class="columns-wrap"
-            v-model="columns"
+            class="pipes-wrap"
+            v-model="pipes"
             v-bind="dragOptions"
             @start="dragging = true"
             @end="dragging = false"
         >
-            <column
-                v-for="column in columns"
-                :key="column.id"
-                :column="column"
+            <pipe-column
+                v-for="pipe in pipes"
+                :key="pipe.id"
+                :pipe="pipe"
             >
-            </column>
+            </pipe-column>
         </draggable>
-        <add-column/>
+        <add-pipe/>
     </section>
 </template>
 
 <script>
-import Column from './column.vue';
-import AddColumn from './add-column.vue';
+import PipeColumn from '@/views/components/board/all/pipe-column.vue';
+import AddPipe from '@/views/components/board/all/add-pipe.vue';
 import Draggable from 'vuedraggable';
 
 export default {
     components: {
-        Column,
-        AddColumn,
+        PipeColumn,
+        AddPipe,
         Draggable,
     },
     beforeMount() {
         this.$api.fetchData()
-            .then((columns) => {
-                this.$store.commit('board/setColumns', columns);
+            .then((pipes) => {
+                this.$store.commit('board/setPipes', pipes);
             });
     },
     data() {
@@ -41,19 +41,19 @@ export default {
         };
     },
     computed: {
-        columns: {
+        pipes: {
             get() {
-                return this.$store.state.board.columns;
+                return this.$store.state.board.pipes;
             },
-            set(columns) {
-                this.$store.commit('board/setColumns', columns);
+            set(pipes) {
+                this.$store.commit('board/setPipes', pipes);
             },
         },
         dragOptions() {
             return {
                 animation: 200,
-                group: 'columns',
-                ghostClass: 'ghost-column',
+                group: 'pipes',
+                ghostClass: 'ghost-pipe',
                 disabled: false,
                 handle: '.handle',
             };
@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style scoped>
-.columns {
+.pipes {
     flex: 1;
     height: 100%;
     vertical-align: top;
@@ -73,12 +73,12 @@ export default {
     padding: 30px 40px 30px 40px;
     box-sizing: border-box;
 }
-.columns-wrap {
+.pipes-wrap {
     display: inline-block;
     vertical-align: top;
     height: 100%;
 }
-.ghost-column {
+.ghost-pipe {
     opacity: 0.5;
 }
 </style>

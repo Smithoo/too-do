@@ -1,5 +1,5 @@
 <template>
-    <section class="add-column">
+    <section class="add-pipe">
         <div class="add" v-if="mode === 'add'"
             @click="changeIntoEditMode">
             <div class="plus-wrap">
@@ -8,23 +8,23 @@
                     <div class="plus-bar vertical"></div>
                 </div>
                 <div class="add-text">
-                    Add Column
+                    Add Pipe
                 </div>
             </div>
         </div>
         <div class="edit" v-else>
-            <div class="colomn-head">
+            <div class="pipe-head">
                 <div class="name">
                     <input type="text"
                         ref="input"
-                        v-model="columnName"
-                        @keydown.enter="addColumn"
+                        v-model="pipeName"
+                        @keydown.enter="addPipe"
                         @keydown.esc="changeIntoAddMode"
-                        placeholder="column name"
+                        placeholder="pipe name"
                         />
                     <button type="button"
                         class="confirm"
-                        @click="addColumn"
+                        @click="addPipe"
                         :disabled="addDisabled"
                     >
                         confirm
@@ -51,23 +51,23 @@ export default {
     data() {
         return {
             mode: MODE.ADD,
-            columnName: '',
+            pipeName: '',
             addDisabled: false,
             isLoading: false,
         };
     },
     computed: {
         trimmedName() {
-            return this.columnName.trim();
+            return this.pipeName.trim();
         },
     },
     watch: {
-        columnName() {
+        pipeName() {
             if (this.mode === MODE.ADD) {
                 return;
             }
 
-            const isDuplicatedName = this.columnName === 'aaa';
+            const isDuplicatedName = this.pipeName === 'aaa';
             if (isDuplicatedName) {
                 this.addDisabled = true;
                 this.$store.dispatch('ui/snackbar/error', { msg: 'Duplicated name!' });
@@ -80,7 +80,7 @@ export default {
         changeIntoAddMode() {
             this.mode = MODE.ADD;
             this.$refs.input.blur();
-            this.columnName = '';
+            this.pipeName = '';
         },
         changeIntoEditMode() {
             this.mode = MODE.EDIT;
@@ -88,28 +88,28 @@ export default {
                 this.$refs.input.focus();
             });
         },
-        addColumn() {
-            if (!this.columnName) {
-                this.$store.dispatch('ui/snackbar/warn', { msg: 'No column name!' });
+        addPipe() {
+            if (!this.pipeName) {
+                this.$store.dispatch('ui/snackbar/warn', { msg: 'No pipe name!' });
                 this.$refs.input.focus();
                 return;
             }
 
             this.isLoading = true;
             // call add api
-            const createColumn = new Promise((resolve) => {
+            const createPipe = new Promise((resolve) => {
                 setTimeout(() => {
                     resolve();
                 }, 1000);
             });
 
-            createColumn
+            createPipe
                 .then(() => {
-                    this.$store.dispatch('ui/snackbar/show', { msg: 'Add column success!' });
-                    // this.$store.dispatch('data/addColumn', this.columnName);
+                    this.$store.dispatch('ui/snackbar/show', { msg: 'Add pipe success!' });
+                    // this.$store.dispatch('data/addPipe', this.pipeName);
                 })
                 .catch(() => {
-                    this.$store.dispatch('ui/snackbar/error', { msg: 'Fail adding column!' });
+                    this.$store.dispatch('ui/snackbar/error', { msg: 'Fail adding pipe!' });
                 })
                 .finally(() => {
                     this.isLoading = false;
@@ -121,7 +121,7 @@ export default {
 </script>
 
 <style scoped>
-.add-column {
+.add-pipe {
     display: inline-block;
     position: relative;
     box-sizing: border-box;
@@ -192,7 +192,7 @@ export default {
     padding: 10px;
     height: 100%;
 }
-.colomn-head {
+.pipe-head {
     padding-left: 6px;
 }
 h3 {

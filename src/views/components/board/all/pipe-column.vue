@@ -1,13 +1,13 @@
 <template>
-    <section class="column">
-        <div class="column-wrap">
-            <div class="column-head handle">
-                <h3>{{ column.name }}</h3>
+    <section class="pipe-column">
+        <div class="pipe-wrap">
+            <div class="pipe-head handle">
+                <h3>{{ pipe.name }}</h3>
                 <div class="card-count">
-                    {{ column.cards.length }} cards
+                    {{ pipe.cards.length }} cards
                 </div>
             </div>
-            <div class="column-body">
+            <div class="pipe-body">
                 <draggable
                     class="cards"
                     v-model="cards"
@@ -15,7 +15,7 @@
                     @start="dragging = true"
                     @end="dragging = false"
                 >
-                    <card v-for="card in column.cards"
+                    <card v-for="card in pipe.cards"
                         :key="card.id"
                         :card="card">
                     </card>
@@ -27,7 +27,7 @@
 
 <script>
 import Draggable from 'vuedraggable';
-import Card from './card';
+import Card from './../card';
 
 export default {
     components: {
@@ -35,7 +35,7 @@ export default {
         Card,
     },
     props: {
-        column: {
+        pipe: {
             required: true,
         },
     },
@@ -47,11 +47,11 @@ export default {
     computed: {
         cards: {
             get() {
-                return this.$store.getters['board/cardsById'](this.column.id);
+                return this.$store.getters['board/cardsById'](this.pipe.id);
             },
             set(cards) {
                 const payload = {
-                    id: this.column.id,
+                    id: this.pipe.id,
                     cards,
                 };
                 this.$store.commit('board/setCards', payload);
@@ -70,7 +70,7 @@ export default {
 </script>
 
 <style scoped>
-section.column {
+section.pipe-column {
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -79,12 +79,12 @@ section.column {
     width: 240px;
     height: 100%;
 }
-.column-wrap {
+.pipe-wrap {
     position: relative;
     box-sizing: border-box;
     height: 100%;
 }
-.column-head {
+.pipe-head {
     position: absolute;
     top: 0;
     left: 0;
@@ -106,7 +106,7 @@ h3 {
     padding-left: 3px;
     padding-bottom: 20px;
 }
-.column-body {
+.pipe-body {
     position: relative;
     height: 100%;
     padding-top: 60px;
