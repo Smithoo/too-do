@@ -13,6 +13,15 @@ a:hover {
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animated.infinite {
+    animation-iteration-count: infinite;
+}
+
 .hide { display: none; }
 .m-show { display: none; }
 .m-show_inline { display: none; }

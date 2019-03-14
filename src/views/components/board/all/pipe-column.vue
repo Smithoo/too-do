@@ -12,8 +12,6 @@
                     class="cards"
                     v-model="cards"
                     v-bind="dragOptions"
-                    @start="dragging = true"
-                    @end="dragging = false"
                 >
                     <card v-for="card in pipe.cards"
                         :key="card.id"
@@ -38,11 +36,6 @@ export default {
         pipe: {
             required: true,
         },
-    },
-    data() {
-        return {
-            dragging: false,
-        };
     },
     computed: {
         cards: {

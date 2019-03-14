@@ -1,11 +1,9 @@
 <template>
-    <section class="pipes">
+    <section class="all">
         <draggable
             class="pipes-wrap"
             v-model="pipes"
             v-bind="dragOptions"
-            @start="dragging = true"
-            @end="dragging = false"
         >
             <pipe-column
                 v-for="pipe in pipes"
@@ -14,7 +12,7 @@
             >
             </pipe-column>
         </draggable>
-        <add-pipe/>
+        <add-pipe v-if="!isLoading" />
     </section>
 </template>
 
@@ -30,14 +28,18 @@ export default {
         Draggable,
     },
     beforeMount() {
+        this.isLoading = true;
+        this.$emit('loadStart');
         this.$api.fetchData()
             .then((pipes) => {
                 this.$store.commit('board/setPipes', pipes);
+                this.isLoading = false;
+                this.$emit('loadEnd');
             });
     },
     data() {
         return {
-            dragging: false,
+            isLoading: false,
         };
     },
     computed: {
@@ -63,15 +65,15 @@ export default {
 </script>
 
 <style scoped>
-.pipes {
-    flex: 1;
+.all {
+    width: 100%;
     height: 100%;
     vertical-align: top;
+    padding: 30px 40px 30px 40px;
+    box-sizing: border-box;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    padding: 30px 40px 30px 40px;
-    box-sizing: border-box;
 }
 .pipes-wrap {
     display: inline-block;

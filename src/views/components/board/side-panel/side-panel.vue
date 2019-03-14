@@ -44,6 +44,7 @@ aside {
     background-color: #fff;
     border-right: 1px solid #ddd;
     box-sizing: border-box;
+    z-index: 200;
 }
 aside .side-menu {
     position: relative;

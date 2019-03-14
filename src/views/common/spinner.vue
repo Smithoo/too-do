@@ -16,10 +16,10 @@
     width: 51px;
     height: 51px;
     margin: 6px;
-    border: 6px solid #d1d1d1;
+    border: 6px solid #555555;
     border-radius: 50%;
     animation: spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #d1d1d1 transparent transparent transparent;
+    border-color: #555555 transparent transparent transparent;
 }
 .spinner div:nth-child(1) {
     animation-delay: -0.45s;
