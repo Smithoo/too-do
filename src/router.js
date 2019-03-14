@@ -16,7 +16,7 @@ export default new Router({
             redirect: '/board/all',
         },
         {
-            path: '/board/:colomn',
+            path: '/board/:colomnId',
             component: () => import(/* webpackChunkName: 'board' */ './views/pages/board.vue'),
         },
         {

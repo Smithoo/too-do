@@ -8,6 +8,9 @@ export default {
             const targetColumn = state.columns.find((column) => column.id === id);
             return targetColumn.cards;
         },
+        columnMetas(state) {
+            return state.columns.map((column) => ({ id: column.id, name: column.name }));
+        },
     },
     mutations: {
         setColumns(state, columns) {

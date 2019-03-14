@@ -2,12 +2,27 @@
     <nav class="navigation">
         <ul>
             <li><router-link to="/board/all">All</router-link></li>
-            <li><router-link to="/board/todo">To Do</router-link></li>
-            <li><router-link to="/board/doing">Doing</router-link></li>
-            <li><router-link to="/board/done">Done</router-link></li>
+            <li v-for="columnMeta in columnMetas" :key="columnMeta.id">
+                <router-link :to="getColumnUrl(columnMeta.id)">{{ columnMeta.name }}</router-link>
+            </li>
         </ul>
     </nav>
 </template>
+
+<script>
+export default {
+    computed: {
+        columnMetas() {
+            return this.$store.getters['board/columnMetas'];
+        },
+    },
+    methods: {
+        getColumnUrl(columnId) {
+            return `/board/${columnId}`;
+        },
+    },
+};
+</script>
 
 <style scoped>
 .navigation {
