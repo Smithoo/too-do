@@ -127,7 +127,7 @@ export default {
     box-sizing: border-box;
     width: 240px;
     height: 100%;
-    border: 3px dashed #cfcfcf;
+    border: 2px dashed #cfcfcf;
     border-radius: 10px;
 }
 .add {

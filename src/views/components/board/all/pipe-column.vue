@@ -67,7 +67,7 @@ section.pipe-column {
     display: inline-block;
     position: relative;
     vertical-align: top;
-    width: 220px;
+    width: 250px;
     height: 100%;
     margin-right: 35px;
 }

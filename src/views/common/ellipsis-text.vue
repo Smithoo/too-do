@@ -11,6 +11,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 </style>

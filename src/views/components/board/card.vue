@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card" @click="openDetail">
         <h6 class="card-title">
             <ellipsis-text>{{ card.title }}</ellipsis-text>
         </h6>
@@ -43,6 +43,10 @@ export default {
             return urlUtil.refineUrl(this.card.url);
         },
     },
+    methods: {
+        openDetail() {
+        },
+    },
 };
 </script>
 
@@ -77,7 +81,7 @@ export default {
 }
 .card-url {
     position: relative;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 .card-url a {
     color: #6d6d6d;
@@ -109,7 +113,7 @@ export default {
 }
 .card-url .card-url-text span {
     position: relative;
-    top: 1px;
+    top: -1px;
 }
 .card-url:hover button {
     background-color: #7d7d7d;
