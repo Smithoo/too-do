@@ -2,11 +2,8 @@
     <div class="board">
         <side-panel/>
         <div class="board-contents">
-            <router-view
-                @loadStart="isLoading = true"
-                @loadEnd="isLoading = false"
-            />
             <loading v-if="isLoading" />
+            <router-view v-else/>
         </div>
     </div>
 </template>
@@ -24,6 +21,14 @@ export default {
         return {
             isLoading: false,
         };
+    },
+    beforeMount() {
+        this.isLoading = true;
+        this.$api.fetchData()
+            .then((pipes) => {
+                this.$store.commit('board/setPipes', pipes);
+                this.isLoading = false;
+            });
     },
 };
 </script>

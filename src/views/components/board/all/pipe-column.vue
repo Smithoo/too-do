@@ -40,7 +40,7 @@ export default {
     computed: {
         cards: {
             get() {
-                return this.$store.getters['board/cardsById'](this.pipe.id);
+                return this.$store.getters['board/cards'](this.pipe.id);
             },
             set(cards) {
                 const payload = {
@@ -67,10 +67,9 @@ section.pipe-column {
     display: inline-block;
     position: relative;
     vertical-align: top;
-    box-sizing: border-box;
-    padding: 10px 10px 10px 12px;
-    width: 240px;
+    width: 220px;
     height: 100%;
+    margin-right: 35px;
 }
 .pipe-wrap {
     position: relative;

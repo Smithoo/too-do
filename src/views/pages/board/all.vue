@@ -12,7 +12,7 @@
             >
             </pipe-column>
         </draggable>
-        <add-pipe v-if="!isLoading" />
+        <add-pipe />
     </section>
 </template>
 
@@ -26,21 +26,6 @@ export default {
         PipeColumn,
         AddPipe,
         Draggable,
-    },
-    beforeMount() {
-        this.isLoading = true;
-        this.$emit('loadStart');
-        this.$api.fetchData()
-            .then((pipes) => {
-                this.$store.commit('board/setPipes', pipes);
-                this.isLoading = false;
-                this.$emit('loadEnd');
-            });
-    },
-    data() {
-        return {
-            isLoading: false,
-        };
     },
     computed: {
         pipes: {
@@ -69,7 +54,7 @@ export default {
     width: 100%;
     height: 100%;
     vertical-align: top;
-    padding: 30px 40px 30px 40px;
+    padding: 40px 50px 40px 50px;
     box-sizing: border-box;
     overflow-x: scroll;
     overflow-y: hidden;

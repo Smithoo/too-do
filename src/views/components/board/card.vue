@@ -48,11 +48,13 @@ export default {
 
 <style scoped>
 .card {
-    padding: 15px 12px;
     position: relative;
-    box-shadow: 2px 2px 3px #dfdfdf;
+    width: 100%;
     background-color: #fff;
     margin-bottom: 8px;
+    padding: 15px 12px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 3px #dfdfdf;
 }
 .card.on {
     border: 1px solid #3070ff;

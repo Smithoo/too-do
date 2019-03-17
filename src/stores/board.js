@@ -4,7 +4,10 @@ export default {
         pipes: [],
     },
     getters: {
-        cardsById: (state) => (id) => {
+        pipe: (state) => (id) => {
+            return state.pipes.find((pipe) => pipe.id === id) || [];
+        },
+        cards: (state) => (id) => {
             const targetPipe = state.pipes.find((pipe) => pipe.id === id);
             return targetPipe.cards;
         },
