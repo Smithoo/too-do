@@ -45,7 +45,18 @@ export default {
     padding: 40px 50px 40px 50px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.pipe::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+.pipe::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(10, 10, 10, .15);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 .pipe-head {
     position: relative;

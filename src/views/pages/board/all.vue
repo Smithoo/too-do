@@ -60,6 +60,16 @@ export default {
     overflow-y: hidden;
     white-space: nowrap;
 }
+.all::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 7px;
+}
+.all::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(10, 10, 10, .15);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
 .pipes-wrap {
     display: inline-block;
     vertical-align: top;
