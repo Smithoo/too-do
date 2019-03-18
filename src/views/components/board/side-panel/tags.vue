@@ -2,7 +2,12 @@
     <div class="tags">
         <h4>Tags</h4>
         <div class="tag-container">
-            <tag v-for="tag in tags" :key="tag">{{ tag }}</tag>
+            <tag v-for="tag in tags"
+                :key="tag.label"
+                :color="tag.color"
+            >
+                {{ tag.label }}
+            </tag>
         </div>
     </div>
 </template>
@@ -11,10 +16,13 @@
 import Tag from '@/views/common/tag.vue';
 
 export default {
-    data() {
-        return {
-            tags: ['a', 'hello', 'bye', 'asdf', 'qw', 'werrrw'],
-        };
+    computed: {
+        tags() {
+            const getheredTags = this.$store.getters['board/tags'];
+            return Object.values(getheredTags).slice().sort((a, b) => {
+                return b.count - a.count;
+            });
+        },
     },
     components: {
         Tag,

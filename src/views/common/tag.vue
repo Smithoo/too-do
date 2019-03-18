@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 .tag {
-    padding: 6px 8px 4px 8px;
+    padding: 6px 6px 4px 6px;
     border: 0;
     border-radius: 12px;
     height: 10px;

@@ -21,12 +21,19 @@ export const dummyData = [
                 title: '100일 상 예약',
                 date: '2018-11-22 12:00:00',
                 due: '2018-11-23',
+                tags: [
+                    { label: 'PUBG', color: '#b9ed65' },
+                    { label: 'Baby', color: '#efd37f' },
+                ],
             },
             {
                 id: 'card3',
                 title: '베페 신청하기',
                 desc: '코엑스 베이비 페어 예약',
                 date: '2018-11-22 12:00:00',
+                tags: [
+                    { label: 'PUBG', color: '#b9ed65' },
+                ],
             },
         ],
     },
@@ -42,6 +49,9 @@ export const dummyData = [
                 date: '2018-11-22 12:00:00',
                 url: 'https://www.naver.com',
                 due: '2018-11-23',
+                tags: [
+                    { label: 'PUBG', color: '#b9ed65' },
+                ],
             },
             {
                 id: 'card7',
