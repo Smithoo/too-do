@@ -24,5 +24,10 @@ export default {
             const targetPipe = state.pipes.find((pipe) => pipe.id === id);
             targetPipe.cards = cards;
         },
+        setPipeMode(state, payload) {
+            const { id, mode } = payload;
+            const targetPipe = state.pipes.find((pipe) => pipe.id === id);
+            targetPipe.mode = mode;
+        },
     },
 };

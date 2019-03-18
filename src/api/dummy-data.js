@@ -2,6 +2,7 @@ export const dummyData = [
     {
         id: 'col1',
         name: 'todo',
+        mode: 'normal',
         cards: [
             {
                 id: 'card6',
@@ -32,6 +33,7 @@ export const dummyData = [
     {
         id: 'col2',
         name: 'doing',
+        mode: 'wide',
         cards: [
             {
                 id: 'card2',
@@ -58,6 +60,7 @@ export const dummyData = [
     {
         id: 'col3',
         name: 'done',
+        mode: 'collapsed',
         cards: [
             {
                 id: 'card4',

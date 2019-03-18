@@ -1,13 +1,26 @@
 <template>
-    <section class="pipe-column">
+    <section class="pipe-column" :class="mode">
         <div class="pipe-wrap">
             <div class="pipe-head handle">
-                <h3>{{ pipe.name }}</h3>
-                <div class="card-count">
-                    {{ pipe.cards.length }} cards
+                <div class="pipe-title">
+                    <div class="pipe-name">
+                        <h3>{{ pipe.name }}</h3>
+                    </div>
+                    <div class="card-count">{{ pipe.cards.length }} cards</div>
+                </div>
+                <div class="pipe-control">
+                    <button type="button" class="width-control" @click="changeWidth">
+                        <i v-if="mode === 'wide'"
+                            class="material-icons md-24">unfold_less</i>
+                        <i v-if="mode !== 'wide'"
+                            class="material-icons md-24">unfold_more</i>
+                    </button>
+                    <button type="button" class="setting" v-if="!isCollapsed">
+                        <i class="material-icons md-18">settings</i>
+                    </button>
                 </div>
             </div>
-            <div class="pipe-body">
+            <div class="pipe-body" v-if="!isCollapsed">
                 <draggable
                     class="cards"
                     v-model="cards"
@@ -50,6 +63,9 @@ export default {
                 this.$store.commit('board/setCards', payload);
             },
         },
+        mode() {
+            return this.pipe.mode;
+        },
         dragOptions() {
             return {
                 animation: 200,
@@ -57,6 +73,21 @@ export default {
                 ghostClass: 'ghost-card',
                 disabled: false,
             };
+        },
+        isCollapsed() {
+            return this.mode === 'collapsed';
+        },
+    },
+    methods: {
+        changeWidth() {
+            let nextMode = 'collapsed';
+            if (this.mode === 'collapsed') {
+                nextMode = 'normal';
+            } else if (this.mode === 'normal') {
+                nextMode = 'wide';
+            }
+
+            this.$store.commit('board/setPipeMode', { id: this.pipe.id,  mode: nextMode });
         },
     },
 };
@@ -70,6 +101,16 @@ section.pipe-column {
     width: 250px;
     height: 100%;
     margin-right: 35px;
+    transition: width 0.3s;
+}
+section.pipe-column.collapsed {
+    width: 60px;
+}
+section.pipe-column.normal {
+    width: 250px;
+}
+section.pipe-column.wide {
+    width: 400px;
 }
 .pipe-wrap {
     position: relative;
@@ -86,18 +127,66 @@ section.pipe-column {
     box-sizing: border-box;
     z-index: 10;
 }
+.pipe-name {
+    padding-bottom: 6px;
+}
 h3 {
     color: #333333;
     font-size: 24px;
     letter-spacing: 2px;
-    padding-bottom: 6px;
 }
 .card-count {
     color: #666666;
     font-size: 12px;
     padding-left: 3px;
-    padding-bottom: 20px;
 }
+.pipe-head .pipe-control {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.pipe-head:hover .pipe-control {
+    display: block;
+}
+.pipe-control button {
+    width: 24px;
+    height: 24px;
+    margin-left: 3px;
+}
+.pipe-control button.width-control i {
+    position: relative;
+    top: 3px;
+    transform: rotate(90deg);
+}
+.pipe-control button i {
+    color: #999999;
+}
+.pipe-control button i:hover {
+    color: #444444;
+}
+.collapsed .pipe-control {
+    display: block;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+}
+.pipe-title {
+    transform: rotate(0);
+    transition: 0.3s;
+}
+.collapsed .pipe-title {
+    position: absolute;
+    transform: rotate(90deg);
+    transform-origin: bottom left;
+    padding-bottom: 8px;
+    padding-left: 10px;
+}
+.collapsed .pipe-control button {
+    margin: 0;
+}
+/* pipe body */
 .pipe-body {
     position: relative;
     height: 100%;
