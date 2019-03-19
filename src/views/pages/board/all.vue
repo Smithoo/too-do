@@ -5,25 +5,25 @@
             v-model="pipes"
             v-bind="dragOptions"
         >
-            <pipe-column
+            <pipe
                 v-for="pipe in pipes"
                 :key="pipe.id"
                 :pipe="pipe"
             >
-            </pipe-column>
+            </pipe>
         </draggable>
         <add-pipe />
     </section>
 </template>
 
 <script>
-import PipeColumn from '@/views/components/board/all/pipe-column.vue';
+import Pipe from '@/views/components/board/all/pipe.vue';
 import AddPipe from '@/views/components/board/all/add-pipe.vue';
 import Draggable from 'vuedraggable';
 
 export default {
     components: {
-        PipeColumn,
+        Pipe,
         AddPipe,
         Draggable,
     },

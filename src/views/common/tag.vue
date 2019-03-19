@@ -1,5 +1,8 @@
 <template>
-    <div class="tag" :style="{ backgroundColor: color }">
+    <div class="tag"
+        :style="{ backgroundColor: color }"
+        @click="$emit('click')"
+    >
         <div class="hide">
             <slot>tag contents</slot>
         </div>

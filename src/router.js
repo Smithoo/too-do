@@ -21,7 +21,7 @@ export default new Router({
                 },
                 {
                     path: ':pipeId',
-                    component: () => import(/* webpackChunkName: 'board' */ './views/pages/board/pipe.vue'),
+                    component: () => import(/* webpackChunkName: 'board' */ './views/pages/board/pipe-view.vue'),
                 },
             ],
             redirect: '/board/all',

@@ -1,5 +1,5 @@
 <template>
-    <section class="pipe-column" :class="mode">
+    <section class="pipe" :class="mode">
         <div class="pipe-wrap">
             <div class="pipe-head handle">
                 <div class="pipe-title">
@@ -53,7 +53,7 @@ export default {
     computed: {
         cards: {
             get() {
-                return this.$store.getters['board/cards'](this.pipe.id);
+                return this.pipe.cards;
             },
             set(cards) {
                 const payload = {
@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style scoped>
-section.pipe-column {
+section.pipe {
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -103,13 +103,13 @@ section.pipe-column {
     margin-right: 35px;
     transition: width 0.3s;
 }
-section.pipe-column.collapsed {
+section.pipe.collapsed {
     width: 60px;
 }
-section.pipe-column.normal {
+section.pipe.normal {
     width: 250px;
 }
-section.pipe-column.wide {
+section.pipe.wide {
     width: 400px;
 }
 .pipe-wrap {
