@@ -42,5 +42,7 @@ h4 {
 }
 .tag-container > .tag {
     float: left;
+    margin-bottom: 8px;
+    margin-right: 4px;
 }
 </style>

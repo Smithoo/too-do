@@ -128,6 +128,11 @@ export default {
 }
 .card-tags {
     margin-top: 10px;
+    white-space: normal;
+    line-height: 25px;
+}
+.card-tags .tag {
+    margin-right: 4px;
 }
 .card-context-btn {
     position: absolute;

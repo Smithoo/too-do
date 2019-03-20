@@ -141,7 +141,7 @@ h3 {
     padding-left: 3px;
 }
 .pipe-head .pipe-control {
-    display: none;
+    /* display: none; */
     position: absolute;
     top: 20px;
     right: 20px;
@@ -156,7 +156,7 @@ h3 {
 }
 .pipe-control button.width-control i {
     position: relative;
-    top: 3px;
+    top: -2px;
     transform: rotate(90deg);
 }
 .pipe-control button i {
@@ -167,6 +167,7 @@ h3 {
 }
 .collapsed .pipe-control {
     display: block;
+    top: 25px;
     left: 0;
     width: 60px;
     height: 60px;
