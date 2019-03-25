@@ -123,7 +123,7 @@ section.pipe.wide {
     left: 0;
     padding-left: 6px;
     width: 100%;
-    height: 60px;
+    height: 70px;
     box-sizing: border-box;
     z-index: 10;
 }
@@ -191,7 +191,7 @@ h3 {
 .pipe-body {
     position: relative;
     height: 100%;
-    padding-top: 60px;
+    padding-top: 70px;
     box-sizing: border-box;
 }
 .cards {

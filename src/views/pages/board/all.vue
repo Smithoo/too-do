@@ -54,7 +54,7 @@ export default {
     width: 100%;
     height: 100%;
     vertical-align: top;
-    padding: 40px 50px 40px 50px;
+    padding: 55px 50px 40px 50px;
     box-sizing: border-box;
     overflow-x: scroll;
     overflow-y: hidden;

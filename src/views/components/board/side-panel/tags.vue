@@ -5,6 +5,7 @@
             <tag v-for="tag in tags"
                 :key="tag.label"
                 :color="tag.color"
+                @click="toggleFilterTag(tag)"
             >
                 {{ tag.label }}
             </tag>
@@ -16,6 +17,9 @@
 import Tag from '@/views/common/tag.vue';
 
 export default {
+    components: {
+        Tag,
+    },
     computed: {
         tags() {
             const getheredTags = this.$store.getters['board/tags'];
@@ -24,8 +28,10 @@ export default {
             });
         },
     },
-    components: {
-        Tag,
+    methods: {
+        toggleFilterTag(tag) {
+            this.$store.dispatch('board/tagFilter/toggleFilterTag', tag);
+        },
     },
 };
 </script>

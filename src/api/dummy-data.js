@@ -13,7 +13,12 @@ export const dummyData = [
                 tags: [
                     { label: 'PUBG', color: '#b9ed65' },
                     { label: 'HEY', color: '#65a9ed' },
-                    { label: 'Baby', color: '#efd37f' },
+                    { label: 'Baby1', color: '#efd37f' },
+                    { label: 'Baby2', color: '#efd37f' },
+                    { label: 'Baby3', color: '#efd37f' },
+                    { label: 'Baby4', color: '#efd37f' },
+                    { label: 'Baby5', color: '#efd37f' },
+                    { label: 'Baby6', color: '#efd37f' },
                 ],
             },
             {

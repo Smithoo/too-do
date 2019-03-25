@@ -45,6 +45,7 @@ export default {
     border-radius: 10px;
     padding-left: 6px;
     padding-right: 6px;
+    cursor: pointer;
 }
 .tag > div {
     display: inline-block;

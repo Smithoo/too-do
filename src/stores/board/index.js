@@ -1,3 +1,5 @@
+import tagFilter from './tag-filter';
+
 export default {
     namespaced: true,
     state: {
@@ -52,5 +54,8 @@ export default {
             const targetPipe = state.pipes.find((pipe) => pipe.id === id);
             targetPipe.mode = mode;
         },
+    },
+    modules: {
+        tagFilter,
     },
 };
