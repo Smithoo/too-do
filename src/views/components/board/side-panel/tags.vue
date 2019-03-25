@@ -38,7 +38,7 @@ export default {
 
 <style scoped>
 .tags {
-    padding: 0 12px;
+    padding: 0 6px;
 }
 h4 {
     color: #3f3f3f;
