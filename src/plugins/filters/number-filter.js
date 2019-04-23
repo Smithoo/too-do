@@ -1,4 +1,4 @@
-export default {
+export const filters = {
     comma(num) {
         if (!num) {
             return '';
@@ -8,5 +8,11 @@ export default {
         const regex = /\B(?=(\d{3})+(?!\d))/g;
         parts[0] = parts[0].replace(regex, ',');
         return parts.join('.');
+    },
+};
+
+export default {
+    install(Vue) {
+        Vue.filter(filters);
     },
 };

@@ -6,8 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit --colors",
-    "test:watch": "vue-cli-service test:unit --colors --watchAll",
+    "test": "vue-cli-service test:unit",
+    "test:watch": "vue-cli-service test:unit --watchAll",
     "test:report": "vue-cli-service test:unit --coverage"
   },
   "dependencies": {
@@ -15,27 +15,27 @@
     "moment": "^2.24.0",
     "nanoid": "^2.0.1",
     "v-calendar": "^0.9.7",
-    "vue": "^2.6.8",
-    "vue-i18n": "^8.8.2",
-    "vue-router": "^3.0.1",
-    "vuedraggable": "^2.19.1",
+    "vue": "^2.6.10",
+    "vue-i18n": "^8.10.0",
+    "vue-router": "^3.0.6",
+    "vuedraggable": "^2.20.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.4.1",
-    "@vue/cli-plugin-eslint": "^3.4.1",
-    "@vue/cli-plugin-unit-jest": "^3.4.1",
-    "@vue/cli-service": "^3.4.1",
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
+    "@vue/cli-plugin-unit-jest": "^3.6.3",
+    "@vue/cli-service": "^3.6.0",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.1.0",
-    "eslint": "^5.15.1",
+    "babel-jest": "^24.7.1",
+    "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "sinon": "^7.2.7",
-    "vue-template-compiler": "^2.6.8"
+    "sinon": "^7.3.2",
+    "vue-template-compiler": "^2.6.10"
   },
   "postcss": {
     "plugins": {
@@ -59,6 +59,9 @@
       ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
       "^.+\\.jsx?$": "babel-jest"
     },
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
@@ -68,6 +71,10 @@
     "testMatch": [
       "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
     ],
-    "testURL": "http://localhost/"
+    "testURL": "http://localhost/",
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
   }
 }

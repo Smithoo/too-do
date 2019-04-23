@@ -2,13 +2,13 @@ import Vue from 'vue';
 import App from './app.vue';
 import router from './router';
 import store from './stores';
-import filters from './filters';
+import plugins from './plugins';
 import api from './api';
 
 class TooDo {
     async bootstrap() {
         await this.loadStaticResources();
-        this.addVueFilters();
+        this.loadPlugins();
         this.initVue();
     }
 
@@ -18,12 +18,9 @@ class TooDo {
         return Promise.all([style]);
     }
 
-    addVueFilters() {
-        const filterEntry = Object.entries(filters);
-
-        filterEntry.forEach(([filterName, filter]) => {
-            Vue.filter(filterName, filter);
-        });
+    loadPlugins() {
+        plugins.loadDependencyInjection();
+        plugins.loadFilters();
     }
 
     initVue() {
